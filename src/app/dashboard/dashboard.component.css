@@ -1,0 +1,19 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  /* padding: px; */
+  color: black;
+  background: var(--amarillo);
+}
+
+.manage {
+  max-width: 400px;
+}
+
+.manage .form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

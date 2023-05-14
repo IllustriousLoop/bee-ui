@@ -1,0 +1,57 @@
+.grid {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  color: black;
+}
+
+.concept {
+  background: var(--amarillo);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.concept img {
+  width: 300px;
+  height: 290px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background: var(--palido);
+}
+
+.form h1 {
+  font-weight: bold;
+}
+
+.form a {
+  margin-top: 20px;
+  color: var(--gris);
+  text-decoration: none;
+}
+.form a:hover {
+  color: var(--amarillo);
+}
+
+.form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .concept {
+    display: none;
+  }
+
+  .form {
+    grid-column: 1 / -1;
+  }
+}
