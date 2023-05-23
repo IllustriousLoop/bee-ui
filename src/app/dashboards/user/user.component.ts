@@ -45,13 +45,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
     createDate: '2017-01-01',
   },
 ];
-
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrls: ['./user.component.css']
 })
-export class DashboardComponent {
+export class UserComponent {
   displayedColumns: string[] = [
     'id',
     'title',

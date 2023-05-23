@@ -1,3 +1,9 @@
+main{
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  background-color: black;
+}
 .background-blob {
   position: fixed;
   width: 60%;
@@ -7,26 +13,27 @@
   z-index: -1;
   transition: background 0.5s ease-in-out;
   background: conic-gradient(
-      from 180deg at 50% 50%,
-      #5b9ae3 0deg,
-      #35cbe5 133.12deg,
-      var(--amarillo) 208.13deg,
-      var(--palido) 360deg
-    )
-    no-repeat;
+    from 180deg at 50% 50%,
+    #5b9ae3 0deg,
+    #35cbe5 133.12deg,
+    var(--amarillo) 208.13deg,
+    var(--palido) 360deg
+  ) no-repeat;
   filter: blur(200px);
   transform: rotate(180deg) translateY(40%);
 }
+
 .hero {
+  height: 100vh;
   padding-left: 1rem;
   padding-right: 1rem;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
   gap: 20px;
   display: flex;
 }
+
 .slogan {
   line-height: 60px;
   background: linear-gradient(
@@ -45,6 +52,7 @@
   margin-bottom: 1.5rem;
   margin: 0;
 }
+
 .name {
   line-height: 25px;
   letter-spacing: 0.08em;
@@ -94,6 +102,7 @@
   font-weight: 500;
   cursor: pointer;
 }
+
 .button-nice:hover {
   box-shadow: 0 1px 40px #e0eafc66;
 }
@@ -123,6 +132,7 @@
   font-weight: 500;
   cursor: pointer;
 }
+
 .button-nice2:hover {
   box-shadow: 0 1px 40px #181bd8c5;
 }

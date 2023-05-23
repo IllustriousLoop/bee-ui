@@ -26,11 +26,12 @@ const Users: User[] = [
 ];
 
 @Component({
-  selector: 'app-view-users',
-  templateUrl: './view-users.component.html',
-  styleUrls: ['./view-users.component.css'],
+  selector: 'app-admin',
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.css']
 })
-export class ViewUsersComponent {
+export class AdminComponent {
+
   displayedColumns: string[] = [
     'id',
     'email',

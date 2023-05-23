@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {FormControl} from "@angular/forms";
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css'],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class SignUPComponent {
+export class RegisterComponent {
   role = [
     {
       value: 'admin',
