@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {AuthService} from "../../auth.service";
 
 @Component({
   selector: 'app-header',
@@ -7,5 +8,8 @@ import {Component, Input} from '@angular/core';
 })
 export class HeaderComponent {
   showFiller = false;
-  @Input() item = ''; // decorate the property with @Input()
+  @Input() item = '';
+  saludo = "Welcome, "
+  constructor(public authService: AuthService) {
+  }
 }

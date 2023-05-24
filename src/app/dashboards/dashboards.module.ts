@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 import {DashboardsRoutingModule} from './dashboards-routing.module';
 import {DashboardsComponent} from './dashboards.component';
@@ -17,6 +17,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import { DrawerComponent } from './header/drawer/drawer.component';
 import {MatListModule} from "@angular/material/list";
 import {MatMenuModule} from "@angular/material/menu";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import {MatMenuModule} from "@angular/material/menu";
     MatIconModule,
     MatSidenavModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    NgOptimizedImage,
+    MatTooltipModule
   ]
 })
 export class DashboardsModule {

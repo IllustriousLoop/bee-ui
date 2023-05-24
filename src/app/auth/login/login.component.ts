@@ -6,6 +6,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import {AuthService} from "../../auth.service";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required, Validators.minLength(8)])
   })
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
   }
 
 
@@ -27,9 +28,11 @@ export class LoginComponent {
       const formData = this.form.value;
       try {
         const x = await axios.get('http://localhost:4200');
+        this.authService.setAuthenticated(true);
+        this.authService.setUserData({name:"Jhair"});
         this.router.navigate(['/dash']);
         console.log("Hello:", formData, x.data)
-      }catch (e) {
+      } catch (e) {
 
       }
     }
