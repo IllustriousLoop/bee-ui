@@ -14,19 +14,3 @@
   align-items: center;
   width: 100%;
 }
-.manage mat-card{
-  max-width: 400px;
-  min-width: 400px;
-}
-
-.manage .form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.actions{
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}

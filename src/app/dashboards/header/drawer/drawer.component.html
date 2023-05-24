@@ -18,14 +18,16 @@
   </mat-list-item>
   <mat-divider></mat-divider>
 
-  <div mat-subheader>Dashboards</div>
+  <div *ngIf="authService.isAuth()">
+    <div mat-subheader>Dashboards</div>
 
-  <mat-list-item routerLink="/dash/user">
-    <mat-icon matListItemIcon>summarize</mat-icon>
-    <span matListItemTitle>User</span>
-  </mat-list-item>
-  <mat-list-item routerLink="/dash/admin">
-    <mat-icon matListItemIcon>widgets</mat-icon>
-    <span matListItemTitle>Admin</span>
-  </mat-list-item>
+    <mat-list-item routerLink="/dash/user">
+      <mat-icon matListItemIcon>summarize</mat-icon>
+      <span matListItemTitle>User</span>
+    </mat-list-item>
+    <mat-list-item routerLink="/dash/admin">
+      <mat-icon matListItemIcon>widgets</mat-icon>
+      <span matListItemTitle>Admin</span>
+    </mat-list-item>
+  </div>
 </mat-nav-list>

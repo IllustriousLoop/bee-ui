@@ -18,6 +18,8 @@ import { DrawerComponent } from './header/drawer/drawer.component';
 import {MatListModule} from "@angular/material/list";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import { FormComponent } from './user/form/form.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     UserComponent,
     HeaderComponent,
     DrawerComponent,
+    FormComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +44,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     MatListModule,
     MatMenuModule,
     NgOptimizedImage,
-    MatTooltipModule
+    MatTooltipModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardsModule {

@@ -14,10 +14,10 @@ main{
   transition: background 0.5s ease-in-out;
   background: conic-gradient(
     from 180deg at 50% 50%,
-    #5b9ae3 0deg,
+    #642bdc 0deg,
     #35cbe5 133.12deg,
-    var(--amarillo) 208.13deg,
-    var(--palido) 360deg
+    #ac06ee 208.13deg,
+    #8f0000 360deg
   ) no-repeat;
   filter: blur(200px);
   transform: rotate(180deg) translateY(40%);
@@ -39,7 +39,7 @@ main{
   background: linear-gradient(
     180deg,
     #ffffff 0%,
-    rgba(227, 153, 153, 0.96) 100%
+    #35cbe5 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -56,7 +56,7 @@ main{
 .name {
   line-height: 25px;
   letter-spacing: 0.08em;
-  background: linear-gradient(360deg, #ffafbd 0%, #ffc3a0 82%);
+  background: linear-gradient(360deg, #642bdc 0%, #35cbe5 82%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

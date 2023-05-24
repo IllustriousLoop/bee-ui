@@ -1,33 +1,7 @@
 <app-header>
   <div class="dashboard">
     <div class="manage">
-      <mat-card>
-        <form>
-          <mat-card-header>
-            <mat-card-title>Add task</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <div class="form">
-              <mat-form-field appearance="fill">
-                <mat-label>Title</mat-label>
-                <input matInput type="text"/>
-              </mat-form-field>
-              <mat-form-field appearance="fill">
-                <mat-label>Textarea</mat-label>
-                <textarea matInput></textarea>
-              </mat-form-field>
-              <mat-slider [max]="max" [min]="min" [step]="step" [discrete]="true">
-                <input matSliderThumb/>
-              </mat-slider>
-            </div>
-          </mat-card-content>
-
-          <mat-card-actions class="actions">
-            <button mat-raised-button color="primary">Save</button>
-            <button mat-raised-button color="accent">Discard</button>
-          </mat-card-actions>
-        </form>
-      </mat-card>
+      <app-form/>
     </div>
     <mat-card>
       <mat-card-content>

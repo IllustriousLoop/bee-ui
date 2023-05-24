@@ -1,0 +1,16 @@
+mat-card{
+  max-width: 400px;
+  min-width: 400px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.actions{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}

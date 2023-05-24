@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthService} from "../../../auth.service";
 
 @Component({
   selector: 'app-drawer',
@@ -6,5 +7,6 @@ import {Component} from '@angular/core';
   styleUrls: ['./drawer.component.css']
 })
 export class DrawerComponent {
-  showFiller: boolean = false;
+  constructor(public authService: AuthService) {
+  }
 }

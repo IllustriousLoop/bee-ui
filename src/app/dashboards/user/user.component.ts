@@ -59,7 +59,5 @@ export class UserComponent {
     'createDate',
   ];
   dataSource = ELEMENT_DATA;
-  max = 5;
-  min = 0;
-  step = 1;
+
 }
