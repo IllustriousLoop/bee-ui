@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import axios from 'axios';
 import {
-  AbstractControl,
+  FormBuilder,
   FormControl,
-  FormGroup,
-  ValidationErrors,
-  ValidatorFn,
   Validators,
 } from '@angular/forms';
 
@@ -14,40 +13,25 @@ import {
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  loginForm: any;
-  form = {
-    email: '',
-    password: '',
-  };
+  form = this.fb.group({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)])
+  })
 
-  ngOnInit(): void {
-    this.loginForm = new FormGroup({
-      email: new FormControl(this.form.email, [
-        Validators.required,
-        forbiddenNameValidator(
-          /^ [a-zA-Z0-9.!#$%&’*+/=?^_{|}~-]+@ [a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$/
-        ),
-      ]),
-      password: new FormControl(this.form.password, Validators.required),
-    });
+  constructor(private fb: FormBuilder, private router: Router) {
   }
 
-  get email() {
-    return this.loginForm.get('email');
-  }
 
-  get password() {
-    return this.loginForm.get('password');
-  }
+  async submitForm() {
+    if (this.form.valid) {
+      const formData = this.form.value;
+      try {
+        const x = await axios.get('http://localhost:4200');
+        this.router.navigate(['/dash']);
+        console.log("Hello:", formData, x.data)
+      }catch (e) {
 
-  public send(): void {
-    console.log(this.email, this.password);
+      }
+    }
   }
-}
-
-export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = nameRe.test(control.value);
-    return forbidden ? { forbiddenName: { value: control.value } } : null;
-  };
 }

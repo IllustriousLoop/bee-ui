@@ -1,23 +1,36 @@
 <div class="grid">
   <div class="concept">
-    <img src="../../../assets/bee.webp" alt="bee image" />
+    <img ngSrc="../../../assets/bee.webp" alt="bee image" height="216" width="250"/>
   </div>
   <div class="form">
     <h1>Login</h1>
-    <form>
+    <form [formGroup]='form' (ngSubmit)="submitForm()">
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput type="text" formControlName="name" />
-        <mat-hint *ngIf="email.errors?.['required']">Required</mat-hint>
+        <input matInput type="text" formControlName='email'/>
+        <mat-hint *ngIf="form.get('email')?.errors?.['require']&& form.get('name')?.touched ">
+          Email is required.
+        </mat-hint>
+
+        <mat-hint *ngIf="form.get('email')?.errors?.['email']&& form.get('name')?.touched">
+          Invalid email format.
+        </mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
-        <input matInput type="password" />
+        <input matInput type="password" formControlName="password"/>
+        <mat-hint *ngIf="form.get('password')?.errors?.['required']&& form.get('name')?.touched">
+          Password is required.
+        </mat-hint>
+        <mat-hint *ngIf="form.get('password')?.errors?.['minlength']&& form.get('name')?.touched">
+          Password must be at least 8 characters long.
+        </mat-hint>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="send()" type="submit">
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
         Login
       </button>
     </form>
-    <a routerLink="/auth/register">No tienes cuenta?</a>
+    <a routerLink="/auth/register">Create account</a>
+
   </div>
 </div>

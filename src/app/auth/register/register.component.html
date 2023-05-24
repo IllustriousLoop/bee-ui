@@ -1,27 +1,53 @@
 <div class="grid">
   <div class="form">
     <h1>Sign Up</h1>
-    <form>
+    <form [formGroup]='form' (ngSubmit)="submitForm()">
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput type="text" />
+        <input matInput type="text" formControlName='email'/>
+        <mat-hint *ngIf="form.get('email')?.errors?.['require']">
+          Email is required.
+        </mat-hint>
+        <mat-hint *ngIf="form.get('email')?.errors?.['email']">
+          Invalid email format.
+        </mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
-        <input matInput type="text" />
+        <input matInput type="text" formControlName="name"/>
+        <mat-hint *ngIf="form.get('name')?.touched && form.get('name')?.errors?.['required']">
+          Name is required.
+        </mat-hint>
+        <mat-hint *ngIf="form.get('name')?.touched && form.get('name')?.errors?.['minlength']">
+          Name must be at least 8 characters long.
+        </mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Middle Name</mat-label>
-        <input matInput type="text" />
+        <input matInput type="text" formControlName="middleName"/>
+        <mat-hint *ngIf="form.get('name')?.touched &&form.get('middleName')?.errors?.['required']">
+          Middle name is required.
+        </mat-hint>
+        <mat-hint *ngIf="form.get('name')?.touched &&form.get('middleName')?.errors?.['minlength']">
+          Middle name must be at least 8 characters long.
+        </mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Surname</mat-label>
-        <input matInput type="text" />
+        <input matInput type="text" formControlName="surname"/>
+        <mat-hint *ngIf="form.get('name')?.touched &&form.get('surname')?.errors?.['required']">
+          Surname is required.
+        </mat-hint>
+        <mat-hint *ngIf="form.get('name')?.touched &&form.get('surname')?.errors?.['minlength']">
+          Surname must be at least 8 characters long.
+        </mat-hint>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Date of birth</mat-label>
-        <input matInput [matDatepicker]="picker3" [value]="date.value" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <input matInput [matDatepicker]="picker3" formControlName="date"/>
+        <mat-hint *ngIf="form.get('name')?.touched &&form.get('date')?.errors?.['required']">
+          Date is required.
+        </mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
           [for]="picker3"
@@ -31,24 +57,33 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
-        <input matInput type="password" />
+        <input matInput type="password" formControlName="password"/>
+        <mat-hint *ngIf="form.get('name')?.touched &&form.get('password')?.errors?.['required']">
+          Password is required.
+        </mat-hint>
+        <mat-hint *ngIf="form.get('name')?.touched &&form.get('password')?.errors?.['minlength']">
+          Password must be at least 8 characters long.
+        </mat-hint>
       </mat-form-field>
+
       <mat-form-field appearance="fill">
         <mat-label>Role</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let x of role" value="x.value">{{
-            x.value
-          }}</mat-option>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let x of roles" [value]="x.value">
+            {{x.value}}
+          </mat-option>
         </mat-select>
+        <mat-hint *ngIf="form.get('name')?.touched && form.get('role')?.errors?.['required']">
+          Role is required.
+        </mat-hint>
       </mat-form-field>
-      <button mat-raised-button color="primary" type="submit">
-        <!-- (click)="send()" -->
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
         OK
       </button>
     </form>
-    <a routerLink="/auth/login">Ya estas registrado?</a>
+    <a routerLink="/auth/login">Are you already registered?</a>
   </div>
   <div class="concept">
-    <img src="../../assets/bee.webp" alt="bee image" />
+    <img src="../../assets/bee.webp" alt="bee image"/>
   </div>
 </div>
