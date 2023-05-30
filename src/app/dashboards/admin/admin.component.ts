@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import axios from "axios";
+import {environment} from "../../../environment/environment";
 
 export interface User {
   id: number;
   email: string;
   firstName: string;
-  surname: string;
+  role: string;
   dateOfBirth: string;
 }
 
@@ -13,14 +15,14 @@ const Users: User[] = [
     id: 1,
     email: 'Hydrogen',
     firstName: 'Hydrogen',
-    surname: 'asdf',
+    role: 'asdf',
     dateOfBirth: '2017-01-01',
   },
   {
     id: 2,
     email: 'Helium',
     firstName: 'Hydrogen',
-    surname: ';lkjl',
+    role: ';lkjl',
     dateOfBirth: '2017-01-01',
   },
 ];
@@ -30,14 +32,27 @@ const Users: User[] = [
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent {
+export class AdminComponent implements OnInit {
 
   displayedColumns: string[] = [
     'id',
     'email',
     'firstName',
-    'surname',
+    'role',
     'dateOfBirth',
   ];
   dataSource = Users;
+
+  async ngOnInit() {
+    const {data} = await axios.get(environment.apiKey + "/users");
+    this.dataSource = data.map((item: string[]) => {
+      return {
+        id: item[0],
+        email: item[1],
+        firstName: item[2],
+        role: item[3],
+        dateOfBirth: item[4],
+      }
+    });
+  }
 }

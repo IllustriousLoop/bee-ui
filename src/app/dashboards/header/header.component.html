@@ -11,12 +11,14 @@
     <span>To bee list</span>
 
     <span class="example-spacer"></span>
-    <button mat-icon-button aria-label="Button of Image of profile"  [matTooltip]="saludo+authService.getUserData()?.name" [matMenuTriggerFor]="menu" *ngIf="authService.isAuth()">
-      <img ngSrc="https://static.jhairparis.com/avatar.png" alt="Image of profile" width="64" height="64" >
+    <button mat-icon-button aria-label="Button of Image of profile"
+            [matTooltip]="saludo+authService.getUserData()?.name" [matMenuTriggerFor]="menu"
+            *ngIf="authService.isAuth()">
+      <img ngSrc="https://static.jhairparis.com/avatar.png" alt="Image of profile" width="64" height="64">
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>Hi!</button>
-      <button mat-menu-item>Hello!</button>
+    <mat-menu #menu="matMenu" >
+      <button mat-menu-item *ngIf="authService.isAuth()">Role: {{authService.getUserData().role}}</button>
+      <button mat-menu-item *ngIf="authService.isAuth()">Date of birth: {{authService.getUserData()["dateOfBirth"]}}</button>
     </mat-menu>
 
   </mat-toolbar>

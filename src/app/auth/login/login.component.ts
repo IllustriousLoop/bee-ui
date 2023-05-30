@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import {AuthService} from "../../auth.service";
+import {environment} from "../../../environment/environment";
 
 @Component({
   selector: 'app-login',
@@ -27,11 +28,28 @@ export class LoginComponent {
     if (this.form.valid) {
       const formData = this.form.value;
       try {
-        const x = await axios.get('http://localhost:4200');
-        this.authService.setAuthenticated(true);
-        this.authService.setUserData({name:"Jhair"});
-        this.router.navigate(['/dash']);
-        console.log("Hello:", formData, x.data)
+        const login = {
+          email: formData.email,
+          password: formData.password
+        }
+        const {data} = await axios.post(environment.apiKey + "/login", login);
+        if (data != -1) {
+          const res = await axios.get(environment.apiKey + "/user?id=" + data);
+          const userData = {
+            id: res.data[0],
+            email: res.data[1],
+            password: res.data[2],
+            role: res.data[3],
+            name: `${res.data[4]} ${res.data[6]}`,
+            firstName: res.data[4],
+            middleName: res.data[5],
+            surname: res.data[6],
+            dateOfBirth: res.data[7]
+          }
+          this.authService.setAuthenticated(true);
+          this.authService.setUserData(userData);
+          await this.router.navigate(['/dash/user']);
+        }
       } catch (e) {
 
       }

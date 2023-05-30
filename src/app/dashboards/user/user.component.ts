@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, OnInit, SimpleChanges} from '@angular/core';
+import {AuthService} from "../../auth.service";
+import axios from "axios";
+import {environment} from "../../../environment/environment";
 
-export interface PeriodicElement {
+export interface task {
   id: number;
   title: string;
   description: string;
@@ -8,7 +11,7 @@ export interface PeriodicElement {
   createDate: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const tasks: task[] = [
   {
     id: 1,
     title: 'Hydrogen',
@@ -45,19 +48,43 @@ const ELEMENT_DATA: PeriodicElement[] = [
     createDate: '2017-01-01',
   },
 ];
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
   displayedColumns: string[] = [
     'id',
     'title',
     'description',
     'priority',
     'createDate',
-  ];
-  dataSource = ELEMENT_DATA;
+  ]
+  dataSource = tasks;
 
+  constructor(private authService: AuthService) {
+  }
+
+  async update() {
+    const owner = this.authService.getUserData().id || "254";
+    const {data} = await axios.get(environment.apiKey + "/tasks?owner=" + owner);
+    this.dataSource = data.map((item: string[]) => {
+      return {
+        id: item[0],
+        title: item[1],
+        description: item[2],
+        priority: item[3],
+        createDate: item[4]
+      }
+    })
+    console.log("Hello", data)
+  }
+
+  async ngOnInit() {
+    if (this.authService.isAuth()) {
+      await this.update();
+    }
+  }
 }
